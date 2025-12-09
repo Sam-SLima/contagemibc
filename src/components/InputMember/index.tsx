@@ -7,14 +7,16 @@ interface InputProps {
 const InputMember = ({ onAddMembro }: InputProps) => {
   const [membro, setMembro] = useState<string>("");
 
-  const handleMembro = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     if (membro.trim() !== "") {
       onAddMembro(membro);
       setMembro("");
     }
   };
+
   return (
-    <div>
+    <form onSubmit={handleSubmit} className="flex items-center gap-2">
       <input
         value={membro}
         onChange={(e) => setMembro(e.target.value)}
@@ -23,13 +25,12 @@ const InputMember = ({ onAddMembro }: InputProps) => {
         className="border border-gray-300 focus:border-teal-600 focus:ring-2 focus:ring-teal-300 py-2 px-3 rounded-lg text-sm text-gray-800 outline-none transition-all"
       />
       <button
-        onClick={handleMembro}
+        type="submit"
         className="p-2 rounded-lg text-gray-500 hover:text-white hover:bg-teal-600 transition-all"
-        title="Excluir família"
       >
         <FaPlus />
       </button>
-    </div>
+    </form>
   );
 };
 

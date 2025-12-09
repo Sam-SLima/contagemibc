@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Card membro={membros.length} familias={familias.length} />
+      <Card />
 
       <Input onAddFamilia={adicionarFamilia} />
 
